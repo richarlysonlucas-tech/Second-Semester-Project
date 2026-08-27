@@ -3,3 +3,4 @@
 - Richarlyson Lucas;
 - Mateus José;
 - João Carlos Lopes;
+- Vitor Gabriel De Souza;
