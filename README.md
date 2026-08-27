@@ -2,3 +2,4 @@
 
 - Richarlyson Lucas;
 - Mateus José;
+- João Carlos Lopes;
