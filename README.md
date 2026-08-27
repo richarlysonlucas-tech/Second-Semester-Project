@@ -5,3 +5,4 @@
 - João Carlos Lopes;
 - Vitor Gabriel De Souza;
 -Jorge Henrique 
+- Walter Rangel S. Neto
