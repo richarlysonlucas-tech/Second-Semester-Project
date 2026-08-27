@@ -4,3 +4,4 @@
 - Mateus José;
 - João Carlos Lopes;
 - Vitor Gabriel De Souza;
+-Jorge Henrique 
