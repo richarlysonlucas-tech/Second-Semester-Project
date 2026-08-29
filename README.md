@@ -8,3 +8,4 @@
 - Walter Rangel S. Neto;
 - Pedro Lucas Domingos;
 - Guilherme Nunes;
+- Arthur Vital
