@@ -8,6 +8,6 @@
 - Walter Rangel S. Neto;
 - Pedro Lucas Domingos;
 - Guilherme Nunes;
-- Arthur Vital
-- Victor Hugo
-- Daniel Veiga
+- Arthur Vital;
+- Victor Hugo;
+- Daniel Veiga;
