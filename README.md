@@ -10,3 +10,4 @@
 - Guilherme Nunes;
 - Arthur Vital
 - Victor Hugo
+- Daniel Veiga
