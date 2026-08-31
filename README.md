@@ -11,3 +11,4 @@
 - Arthur Vital;
 - Victor Hugo;
 - Daniel Veiga;
+- Antony Alexandre;
