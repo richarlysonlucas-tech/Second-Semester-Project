@@ -9,3 +9,4 @@
 - Pedro Lucas Domingos;
 - Guilherme Nunes;
 - Arthur Vital
+- Victor Hugo
