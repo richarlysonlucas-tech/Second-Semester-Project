@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Equipe [Mark of Balance] (Ver README.md para a lista de autores)
+Copyright (c) 2026 Team Mark of Balance (See README.md for the list of authors)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
