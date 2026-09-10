@@ -20,15 +20,15 @@ Escopo de Alto Nível:
 
 # Nomes dos Membros:
 
-- Richarlyson Lucas;
-- Mateus José;
-- João Carlos Lopes;
-- Vitor Gabriel De Souza;
-- Jorge Henrique;
-- Walter Rangel S. Neto;
-- Pedro Lucas Domingos;
-- Guilherme Nunes;
-- Arthur Vital;
-- Victor Hugo;
-- Daniel Veiga;
-- Antony Alexandre;
+-Antony Alexandre;
+-Arthur Vital;
+-Daniel Veiga;
+-Guilherme Nunes;
+-João Carlos Lopes;
+-Jorge Henrique;
+-Mateus José;
+-Pedro Lucas Domingos;
+-Richarlyson Lucas;
+-Victor Hugo;
+-Vitor Gabriel De Souza;
+-Walter Rangel S. Neto.
