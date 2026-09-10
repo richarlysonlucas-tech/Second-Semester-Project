@@ -1,0 +1,43 @@
+ public static void main(String[] args) {
+
+        Personagem jogador = new Personagem();
+
+        jogador.nome = "Vitor";
+        jogador.vida = 100;
+        jogador.força = 15;
+        jogador.velocidade = 10;
+        jogador.precisao = 8;
+        jogador.magia = 5;
+
+        System.out.println("Nome: " + jogador.nome);
+        System.out.println("Vida: " + jogador.vida);
+        System.out.println("Força: " + jogador.força);
+        System.out.println("Velocidade: " + jogador.velocidade);
+        System.out.println("Precisão: " + jogador.precisao);
+        System.out.println("Magia: " + jogador.magia);
+        System.out.println("Sua classe é: " + jogador.getClass().getSimpleName());
+
+
+
+
+        public static void main (String[] args) {
+          Personagem inimigo = new Personagem();
+          
+          inimigo.nome = "Goblin";
+          inimigo.vida = 80;
+          inimigo.força = 12;
+          inimigo.velocidade = 7;
+          inimigo.precisao = 5;
+          inimigo.magia = 3;
+
+
+          System.out.println("Nome: " + inimigo.nome);
+          System.out.println("Vida: " + inimigo.vida);
+          System.out.println("Força: " + inimigo.força);
+          System.out.println("Velocidade: " + inimigo.velocidade);
+          System.out.println("Precisão: " + inimigo.precisao);
+          System.out.println("Magia: " + inimigo.magia);
+
+        
+    }
+}
