@@ -1,13 +1,70 @@
- public static void main(String[] args) {
+import java.util.Scanner;
+
+public class SistemaBatalha {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
 
         Personagem jogador = new Personagem();
 
         jogador.nome = "Vitor";
-        jogador.vida = 100;
-        jogador.força = 15;
-        jogador.velocidade = 10;
-        jogador.precisao = 8;
-        jogador.magia = 5;
+
+        System.out.println("================================");
+        System.out.println("       ESCOLHA SUA CLASSE");
+        System.out.println("================================");
+
+        System.out.println("1 - Guerreiro");
+        System.out.println("2 - Mago");
+        System.out.println("3 - Ladino");
+        System.out.println("4 - Arqueiro");
+
+        System.out.print("\nEscolha sua classe: ");
+        int escolha = scanner.nextInt();
+
+        switch (escolha) {
+
+            case 1:
+                jogador.vida = 120;
+                jogador.força = 20;
+                jogador.velocidade = 7;
+                jogador.precisao = 7;
+                jogador.magia = 2;
+                break;
+
+            case 2:
+                jogador.vida = 80;
+                jogador.força = 5;
+                jogador.velocidade = 8;
+                jogador.precisao = 8;
+                jogador.magia = 20;
+                break;
+
+            case 3:
+                jogador.vida = 90;
+                jogador.força = 12;
+                jogador.velocidade = 15;
+                jogador.precisao = 12;
+                jogador.magia = 5;
+                break;
+
+            case 4:
+                jogador.vida = 100;
+                jogador.força = 13;
+                jogador.velocidade = 12;
+                jogador.precisao = 18;
+                jogador.magia = 4;
+                break;
+
+            default:
+                System.out.println("Opção inválida!");
+                scanner.close();
+                return;
+        }
+
+        System.out.println("\n================================");
+        System.out.println("          SEU PERSONAGEM");
+        System.out.println("================================");
 
         System.out.println("Nome: " + jogador.nome);
         System.out.println("Vida: " + jogador.vida);
@@ -15,29 +72,33 @@
         System.out.println("Velocidade: " + jogador.velocidade);
         System.out.println("Precisão: " + jogador.precisao);
         System.out.println("Magia: " + jogador.magia);
-        System.out.println("Sua classe é: " + jogador.getClass().getSimpleName());
+
+        scanner.close();
 
 
 
+        System.out.println("\n================================");
+        System.out.println("          INIMIGO");
+        System.out.println("================================");
+        System.out.println("Goblin");
+        System.out.println("Vida: 80");
+        System.out.println("Força: 12");
+        System.out.println("Velocidade: 7");
+        System.out.println("Precisão: 5");
+        System.out.println("Magia: 3");
 
-        public static void main (String[] args) {
-          Personagem inimigo = new Personagem();
-          
-          inimigo.nome = "Goblin";
-          inimigo.vida = 80;
-          inimigo.força = 12;
-          inimigo.velocidade = 7;
-          inimigo.precisao = 5;
-          inimigo.magia = 3;
+
+        System.out.println("\n================================");
+        System.out.println("          BATALHA");
+        System.out.println("================================");
+
+        System.out.println("O jogador " + jogador.nome + " inicia a batalha com o inimigo Goblin!");
+        System.out.println("Escolha Seu Ataque:");
+        System.out.println("1 - Ataque Normal");
+        System.out.println("2 - Ataque Especial");
+        System.out.print("Opção: ");
+       
 
 
-          System.out.println("Nome: " + inimigo.nome);
-          System.out.println("Vida: " + inimigo.vida);
-          System.out.println("Força: " + inimigo.força);
-          System.out.println("Velocidade: " + inimigo.velocidade);
-          System.out.println("Precisão: " + inimigo.precisao);
-          System.out.println("Magia: " + inimigo.magia);
-
-        
     }
 }
