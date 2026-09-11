@@ -10,9 +10,9 @@ public class SistemaBatalha {
 
         jogador.nome = "Vitor";
 
-        System.out.println("================================");
+        System.out.println("\n                         ");
         System.out.println("       ESCOLHA SUA CLASSE");
-        System.out.println("================================");
+        System.out.println("\n                         ");
 
         System.out.println("1 - Guerreiro");
         System.out.println("2 - Mago");
@@ -62,9 +62,9 @@ public class SistemaBatalha {
                 return;
         }
 
-        System.out.println("\n================================");
+        System.out.println("\n                      ");
         System.out.println("          SEU PERSONAGEM");
-        System.out.println("================================");
+        System.out.println("\n                        ");
 
         System.out.println("Nome: " + jogador.nome);
         System.out.println("Vida: " + jogador.vida);
@@ -77,9 +77,9 @@ public class SistemaBatalha {
 
 
 
-        System.out.println("\n================================");
+        System.out.println("\n               ");
         System.out.println("          INIMIGO");
-        System.out.println("================================");
+        System.out.println("                  ");
         System.out.println("Goblin");
         System.out.println("Vida: 80");
         System.out.println("Força: 12");
@@ -88,15 +88,43 @@ public class SistemaBatalha {
         System.out.println("Magia: 3");
 
 
-        System.out.println("\n================================");
+        System.out.println("\n               ");
         System.out.println("          BATALHA");
-        System.out.println("================================");
+        System.out.println("\n                 ");
 
         System.out.println("O jogador " + jogador.nome + " inicia a batalha com o inimigo Goblin!");
         System.out.println("Escolha Seu Ataque:");
         System.out.println("1 - Ataque Normal");
         System.out.println("2 - Ataque Especial");
         System.out.print("Opção: ");
+
+        Scanner scannerAtaque = new Scanner(System.in);
+        int escolhaAtaque = scannerAtaque.nextInt();
+
+        switch (escolhaAtaque) {
+            case 1:
+                System.out.println(jogador.nome + " usou Ataque Normal!");
+                System.out.println("O inimigo Goblin recebeu " + jogador.força + " de dano!");
+                break;
+            case 2:
+                System.out.println(jogador.nome + " usou Ataque Especial!");
+                System.out.println("O inimigo Goblin recebeu " + jogador.magia + " de dano!");  
+                break;
+            default:
+                System.out.println("Digite 1 ou 2!");
+                scannerAtaque.close();
+                return;
+
+        
+        }
+
+        System.out.println("\n --------------------------------");
+        System.out.println("          CONTRA-ATAQUE");             ");
+        System.out.println("--------------------------------\n");
+        System.out.println("Goblin contra-ataca!");
+        System.out.println("O inimigo Goblin usou Ataque Normal!");
+        System.out.println(jogador.nome + " recebeu 12 de dano!");
+
        
 
 
