@@ -26,7 +26,7 @@ Escopo de Alto Nível:
 - Guilherme Nunes;
 - João Carlos Lopes;
 - Jorge Henrique;
-- Mateus José;
+- Mateus José S.;
 - Pedro Lucas Domingos;
 - Richarlyson Lucas;
 - Victor Hugo;
