@@ -1,4 +1,6 @@
+package Codigo_Fonte;
 import java.util.Scanner;
+
 
 public class SistemaBatalha {
 
