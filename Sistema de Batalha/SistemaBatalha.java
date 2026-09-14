@@ -14,7 +14,7 @@ public class SistemaBatalha {
             
             Personagem jogador = new Personagem();
             
-            jogador.nome = "Vitor";
+            jogador.nome = "Teste";
             jogador.vida = 120;
             jogador.forca = 20;
             jogador.velocidade = 10;
