@@ -1,89 +1,267 @@
 import java.util.Scanner;
 
 public class SistemaBatalha {
-// Classe principal do sistema de batalha
+
     public static void main(String[] args) {
+
+        // =================================
+        // PERSONAGEM DE TESTE
+        // =================================
         try (Scanner scanner = new Scanner(System.in)) {
+            // =================================
+            // PERSONAGEM DE TESTE
+            // =================================
+            
             Personagem jogador = new Personagem();
-            Batalha resposta = new Batalha();
-// Solicita o nome do personagem e armazena na variável nome
-            System.out.println("Digite o nome do seu personagem: ");
-            jogador.nome = scanner.nextLine();
-
-
-
-            System.out.println("Seja Bem-vindo, " + jogador.nome + "!");
-            System.out.println("       ESCOLHA SUA CLASSE");
-            System.out.println("\n                         ");
-
-            System.out.println("1 - Guerreiro");
-            System.out.println("2 - Mago");
-            System.out.println("3 - Arqueiro");
-
-            System.out.print("\nEscolha sua classe: ");
-            int escolha = scanner.nextInt();
-// Escolha da classe do personagem e atribuição de atributos
-
-            switch (escolha) {
-                case 1 -> {
-                    jogador.vida = 120;
-                    jogador.forca = 20;
-                    jogador.velocidade = 7;
-                    jogador.precisao = 7;
-                    jogador.magia = 2;
-                }
-                case 2 -> {
-                    jogador.vida = 80;
-                    jogador.forca = 5;
-                    jogador.velocidade = 8;
-                    jogador.precisao = 8;
-                    jogador.magia = 20;
-                }
-                case 3 -> {
-                    jogador.vida = 90;
-                    jogador.forca = 6;
-                    jogador.velocidade = 12;
-                    jogador.precisao = 20;
-                    jogador.magia = 5;
-                }
-                default -> {
-                    System.out.println("Opção inválida!");
-                    return;
-                }
-            }
-// Exibe os atributos do personagem 
-            System.out.println("\n                      ");
-            System.out.println("          SEU PERSONAGEM");
-            System.out.println("\n                        ");
-
-            System.out.println("Nome: " + jogador.nome);
-            System.out.println("Vida: " + jogador.vida);
-            System.out.println("Força: " + jogador.forca);
-            System.out.println("Velocidade: " + jogador.velocidade);
-            System.out.println("Precisão: " + jogador.precisao);
-            System.out.println("Magia: " + jogador.magia);
-// Pergunta ao jogador se deseja iniciar a batalha
-            System.out.println("\n                      ");
-            System.out.println("Deseja iniciar uma batalha? (S/N)");
-            resposta.opcao = scanner.next();
-// Avalia a resposta do jogador e executa a ação 
-            switch (resposta.opcao.toUpperCase()) {
-                case "S" -> System.out.println("Iniciando a batalha...");
-                case "N" -> {
-                    System.out.println("Saindo do jogo...");
-                    
-                }
-                default -> {
-                    System.out.println("Opção inválida!");
+            
+            jogador.nome = "Vitor";
+            jogador.vida = 120;
+            jogador.forca = 20;
+            jogador.velocidade = 10;
+            jogador.precisao = 10;
+            jogador.magia = 5;
+            
+            // =================================
+            // INICIAR BATALHA
+            // =================================
+            
+            Batalha batalha = new Batalha();
+            
+            boolean batalhaAtiva = true;
+            
+            while (batalhaAtiva) {
                 
+                System.out.println("\n");
+                System.out.println("          BATALHA");
+                System.out.println("");
+                
+                System.out.println("\n" + jogador.nome +
+                        " - Vida: " + jogador.vida);
+                
+                System.out.println(batalha.nomeInimigo +
+                        " - Vida: " + batalha.vidaInimigo);
+                
+                System.out.println("\n1 - Atacar");
+                System.out.println("2 - Abrir Mochila");
+                System.out.println("3 - Fugir");
+                
+                System.out.print("\nEscolha: ");
+                
+                int opcao = scanner.nextInt();
+                
+                switch (opcao) {
+                    
+                    // =================================
+                    // ATACAR
+                    // =================================
+                    
+                    case 1:
+                        
+                        System.out.println("\n");
+                        System.out.println("           ATAQUES");
+                        System.out.println("");
+                        
+                        System.out.println("1 - Ataque físico");
+                        System.out.println("2 - Ataque mágico");
+                        System.out.println("3 - Buffar");
+                        
+                        System.out.print("\nEscolha: ");
+                        
+                        int ataque = scanner.nextInt();
+                        
+                        switch (ataque) {
+                            
+                            case 1:
+                                
+                                int danoFisico = jogador.forca;
+                                
+                                batalha.vidaInimigo -= danoFisico;
+                                
+                                System.out.println("\nVocê atacou o "
+                                        + batalha.nomeInimigo + "!");
+                                
+                                System.out.println("Dano causado: "
+                                        + danoFisico);
+                                
+                                break;
+                                
+                            case 2:
+                                
+                                int danoMagico = jogador.magia;
+                                
+                                batalha.vidaInimigo -= danoMagico;
+                                
+                                System.out.println("\nVocê lançou uma magia!");
+                                
+                                System.out.println("Dano mágico causado: "
+                                        + danoMagico);
+                                
+                                break;
+                                
+                            case 3:
+                                
+                                jogador.forca += 5;
+                                
+                                System.out.println("\nVocê aumentou sua força!");
+                                
+                                System.out.println("Força atual: "
+                                        + jogador.forca);
+                                
+                                break;
+                                
+                            default:
+                                
+                                System.out.println("\nAtaque inválido!");
+                                
+                                break;
+                        }
+                        
+                        // =================================
+                        // VERIFICAR INIMIGO
+                        // =================================
+                        
+                        if (batalha.vidaInimigo <= 0) {
+                            
+                            batalha.vidaInimigo = 0;
+                            
+                            System.out.println("\nVocê derrotou o "
+                                    + batalha.nomeInimigo + "!");
+                            
+                            batalhaAtiva = false;
+                            
+                        } else {
+                            
+                            // Inimigo contra-ataca
+                            batalha.ataqueInimigo(jogador);
+                            
+                            // =================================
+                            // VERIFICAR JOGADOR
+                            // =================================
+                            
+                            if (jogador.vida <= 0) {
+                                
+                                jogador.vida = 0;
+                                
+                                System.out.println("\nVocê foi derrotado!");
+                                
+                                batalhaAtiva = false;
+                            }
+                        }
+                        
+                        break;
+                        
+                        // =================================
+                        // MOCHILA
+                        // =================================
+                        
+                    case 2:
+                        
+                        System.out.println("\n");
+                        System.out.println("          MOCHILA");
+                        System.out.println("");
+                        
+                        System.out.println("1 - Poção de vida");
+                        System.out.println("2 - Poção de força");
+                        System.out.println("3 - Poção de velocidade");
+                        System.out.println("4 - Poção de precisão");
+                        System.out.println("5 - Poção de magia");
+                        System.out.println("6 - Voltar");
+                        
+                        System.out.print("\nEscolha: ");
+                        
+                        int item = scanner.nextInt();
+                        
+                        switch (item) {
+                            
+                            case 1:
+                                
+                                jogador.vida += 30;
+                                
+                                System.out.println("\nVocê usou uma poção de vida!");
+                                
+                                System.out.println("Vida atual: "
+                                        + jogador.vida);
+                                
+                                break;
+                                
+                            case 2:
+                                
+                                jogador.forca += 5;
+                                
+                                System.out.println("\nSua força aumentou!");
+                                
+                                System.out.println("Força atual: "
+                                        + jogador.forca);
+                                
+                                break;
+                                
+                            case 3:
+                                
+                                jogador.velocidade += 5;
+                                
+                                System.out.println("\nSua velocidade aumentou!");
+                                
+                                System.out.println("Velocidade atual: "
+                                        + jogador.velocidade);
+                                
+                                break;
+                                
+                            case 4:
+                                
+                                jogador.precisao += 5;
+                                
+                                System.out.println("\nSua precisão aumentou!");
+                                
+                                System.out.println("Precisão atual: "
+                                        + jogador.precisao);
+                                
+                                break;
+                                
+                            case 5:
+                                
+                                jogador.magia += 5;
+                                
+                                System.out.println("\nSua magia aumentou!");
+                                
+                                System.out.println("Magia atual: "
+                                        + jogador.magia);
+                                
+                                break;
+                                
+                            case 6:
+                                
+                                System.out.println("\nVoltando para a batalha...");
+                                
+                                break;
+                                
+                            default:
+                                
+                                System.out.println("\nItem inválido!");
+                                
+                                break;
+                        }
+                        
+                        break;
+                        
+                        // =================================
+                        // FUGIR
+                        // =================================
+                        
+                    case 3:
+                        
+                        System.out.println("\nVocê fugiu da batalha!");
+                        
+                        batalhaAtiva = false;
+                        
+                        break;
+                        
+                    default:
+                        
+                        System.out.println("\nOpção inválida!");
+                        
+                        break;
                 }
             }
-
-        
-            
-
-            
-
         }
     }
 }
