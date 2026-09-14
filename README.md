@@ -54,5 +54,4 @@ Este projeto ganha vida graças ao talento e dedicação da nossa equipe.
 
 <div align="center">
   <p><i>"Em Ousia, o poder não está apenas na força, mas na capacidade de manter o universo em equilíbrio."</i></p>
-  <p>Feito com ❤️ pela equipe.</p>
 </div>
