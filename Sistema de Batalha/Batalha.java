@@ -1,18 +1,28 @@
 public class Batalha {
 
-    String nomeInimigo = "Goblin";
+    private boolean batalhaAtiva;
 
-    int vidaInimigo = 100;
-    int forcaInimigo = 15;
+    public void iniciar() {
+        batalhaAtiva = true;
 
-    public void ataqueInimigo(Personagem jogador) {
+        System.out.println("Batalha iniciada!");
+    }
 
-        int dano = forcaInimigo;
+    public void atacar() {
+        System.out.println("Jogador realizou um ataque!");
+    }
 
-        jogador.vida -= dano;
+    public void abrirMochila() {
+        System.out.println("Jogador abriu a mochila!");
+    }
 
-        System.out.println("\nO " + nomeInimigo + " atacou!");
-        System.out.println("Dano recebido: " + dano);
-        System.out.println("Sua vida: " + jogador.vida);
+    public void fugir() {
+        batalhaAtiva = false;
+
+        System.out.println("Jogador fugiu da batalha!");
+    }
+
+    public boolean batalhaAtiva() {
+        return batalhaAtiva;
     }
 }
