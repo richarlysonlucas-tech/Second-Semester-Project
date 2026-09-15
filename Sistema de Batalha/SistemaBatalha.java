@@ -12,6 +12,12 @@ public class SistemaBatalha {
 
         while (batalha.batalhaAtiva()) {
 
+            if (batalha.ehTurnoJogador()) {
+                System.out.println("\n>>> TURNO DO JOGADOR <<<");
+            } else {
+                System.out.println("\n>>> TURNO DO INIMIGO <<<");
+            }
+
             System.out.println("\n========================");
             System.out.println("       BATALHA");
             System.out.println("========================");
@@ -28,10 +34,12 @@ public class SistemaBatalha {
 
                 case 1:
                     batalha.atacar();
+                    batalha.passarTurno();
                     break;
 
                 case 2:
                     batalha.abrirMochila();
+                    batalha.passarTurno();
                     break;
 
                 case 3:
@@ -41,6 +49,11 @@ public class SistemaBatalha {
                 default:
                     System.out.println("Opção inválida!");
                     break;
+            }
+
+            if (!batalha.ehTurnoJogador()) {
+                System.out.println("\nInimigo realizou sua ação!");
+                batalha.passarTurno();
             }
         }
 

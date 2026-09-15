@@ -1,9 +1,11 @@
 public class Batalha {
 
     private boolean batalhaAtiva;
+    private boolean turnoJogador;
 
     public void iniciar() {
         batalhaAtiva = true;
+        turnoJogador = true;
 
         System.out.println("Batalha iniciada!");
     }
@@ -18,11 +20,18 @@ public class Batalha {
 
     public void fugir() {
         batalhaAtiva = false;
-
         System.out.println("Jogador fugiu da batalha!");
     }
 
     public boolean batalhaAtiva() {
         return batalhaAtiva;
+    }
+
+    public boolean ehTurnoJogador() {
+        return turnoJogador;
+    }
+
+    public void passarTurno() {
+        turnoJogador = !turnoJogador;
     }
 }
