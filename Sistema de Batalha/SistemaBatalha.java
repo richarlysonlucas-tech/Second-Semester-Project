@@ -18,10 +18,9 @@ public class SistemaBatalha {
                 System.out.println("\n>>> TURNO DO INIMIGO <<<");
             }
 
-            System.out.println("\n========================");
-            System.out.println("       BATALHA");
-            System.out.println("========================");
-
+            System.out.println("\n");
+            System.out.println(" BATALHA ");
+            System.out.println("");
             System.out.println("1 - Atacar");
             System.out.println("2 - Abrir Mochila");
             System.out.println("3 - Fugir");
