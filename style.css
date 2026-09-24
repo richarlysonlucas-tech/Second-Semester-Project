@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Pixelify+Sans:wght@400..700&display=swap');
+
+body {
+    margin: 0;
+    /* Adicione o nome da sua imagem de fundo aqui */
+    background-image: url('fundo.png'); 
+    background-size: cover; /* Faz a imagem preencher a tela toda */
+    background-position: center; /* Centraliza a imagem */
+    
+    /* Essa linha é o "segredo" para jogos em pixel art não ficarem embaçados */
+    image-rendering: pixelated; 
+
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Caixa do menu */
+#menu-principal {
+    text-align: center;
+    background-color: transparent; /* Fundo transparente para mostrar a imagem de fundo */
+    padding: 40px 60px ;
+    
+}
+
+/* Título do jogo */
+#menu-principal h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h1 {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 2400;
+  font-style: normal;
+  color: #dad614;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #4a4a4a;
+    color: white;
+    border: 2px solid #ffffff;
+    font-size: 1.2rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Efeito quando passa o mouse por cima do botão */
+button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
