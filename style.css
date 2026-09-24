@@ -7,7 +7,7 @@ body {
     background-size: cover; /* Faz a imagem preencher a tela toda */
     background-position: center; /* Centraliza a imagem */
     
-    /* Essa linha é o "segredo" para jogos em pixel art não ficarem embaçados */
+    /* Essa linha é para jogos em pixel art não ficarem embaçados */
     image-rendering: pixelated; 
 
     color: white;
