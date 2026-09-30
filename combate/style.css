@@ -1,0 +1,57 @@
+body { 
+    margin: 0; 
+    background: #000; 
+    overflow: hidden; 
+}
+        
+/* Força o navegador a não borrar a Pixel Art se a tela for redimensionada */
+canvas {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Camada da Interface do Usuário (HTML puro) sobrepondo o jogo */
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Deixa o clique passar para o jogo... */
+    z-index: 10;
+}
+
+/* ...exceto nos elementos clicáveis da UI */
+.painel-ui {
+    pointer-events: auto; 
+    background: rgba(28, 168, 0, 0.7);
+    color: white;
+    font-family: 'Courier New', Courier, monospace; /* Fonte estilo retro */
+    padding: 10px;
+    border: 2px solid white;
+}
+
+.painel-chat {
+    pointer-events: auto; 
+    background: transparent;
+    color: white;
+    font-family: 'Courier New', Courier, monospace; /* Fonte estilo retro */
+    padding: 10px;
+    border: 2px solid white;
+}
+
+#chat { 
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    width: 300px; 
+    height: 150px; 
+}
+
+#status-jogador { 
+    position: absolute; 
+    top: 20px; 
+    left: 20px; 
+}

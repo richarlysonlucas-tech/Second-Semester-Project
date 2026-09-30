@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark of Balance</title>
+    <!-- Importa o Phaser da internet -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.js"></script>
+   <link rel="icon" type="image/x-icon" href="assets/logoMoB-frame0.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Aqui é onde o Phaser vai injetar o Canvas do jogo -->
+    <div id="game-container"></div>
+
+    <!-- Aqui fica a sua interface feita em HTML -->
+    <div id="ui-layer">
+        <div id="status-jogador" class="painel-ui">
+            HP: <span id="hp-texto">100/100</span>
+        </div>
+        <div id="chat" class="painel-chat">
+            <!-- Mensagens do chat vão aparecer aqui -->
+        </div>
+    </div>
+
+    <!-- O seu script principal -->
+    <script src="jogo.js"></script>
+</body>
+</html>
