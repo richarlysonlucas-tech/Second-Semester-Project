@@ -1,10 +1,11 @@
+
 <div align="center">
 
 # ⚔️ Projeto: Ousia (Action-RPG)
 
 **Um mergulho épico de fantasia e ação em um universo onde o equilíbrio dita as regras da realidade.**
 
-[![Gênero: Action-RPG](https://img.shields.io/badge/Gênero-Action--RPG-purple.svg)](#) 
+[![Gênero: Action-RPG](https://img.shields.io/badge/Gênero-Action--RPG-purple.svg)](#)
 [![Modo: Single-Player](https://img.shields.io/badge/Modo-Single--Player-blue.svg)](#)
 [![Status: Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-success.svg)](#)
 
@@ -41,17 +42,19 @@ A progressão do jogo foi desenhada para manter o jogador constantemente engajad
 
 ## 👥 Equipe de Desenvolvimento
 
-Este projeto ganha vida graças ao talento e dedicação da nossa equipe. 
+Este projeto ganha vida graças ao talento e à dedicação da nossa equipe.
 
 | | | |
 | :--- | :--- | :--- |
 | 🛡️ Antony Alexandre | 🛡️ Arthur Vital | 🛡️ Daniel Veiga |
 | 🛡️ Guilherme Nunes | 🛡️ João Carlos Lopes | 🛡️ Jorge Henrique |
 | 🛡️ Mateus José S. | 🛡️ Pedro Lucas Domingos | 🛡️ Richarlyson Lucas |
-| 🛡️ Victor Hugo | 🛡️ Vitor Gabriel De Souza | 🛡️ Walter Rangel S. Neto | 🛡️ Lucas Kemuel |
+| 🛡️ Victor Hugo | 🛡️ Vitor Gabriel De Souza | 🛡️ Walter Rangel S. Neto |
+| 🛡️ Lucas Kemuel | | |
 
 ---
 
 <div align="center">
   <p><i>"Em Ousia, o poder não está apenas na força, mas na capacidade de manter o universo em equilíbrio."</i></p>
 </div>
+```
