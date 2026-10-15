@@ -48,7 +48,7 @@ Este projeto ganha vida graças ao talento e dedicação da nossa equipe.
 | 🛡️ Antony Alexandre | 🛡️ Arthur Vital | 🛡️ Daniel Veiga |
 | 🛡️ Guilherme Nunes | 🛡️ João Carlos Lopes | 🛡️ Jorge Henrique |
 | 🛡️ Mateus José S. | 🛡️ Pedro Lucas Domingos | 🛡️ Richarlyson Lucas |
-| 🛡️ Victor Hugo | 🛡️ Vitor Gabriel De Souza | 🛡️ Walter Rangel S. Neto |
+| 🛡️ Victor Hugo | 🛡️ Vitor Gabriel De Souza | 🛡️ Walter Rangel S. Neto | 🛡️ Lucas Kemuel |
 
 ---
 
