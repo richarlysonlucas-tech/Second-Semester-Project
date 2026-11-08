@@ -14,14 +14,12 @@ import java.util.List;
  */
 public class ControladorEncontro {
     private ServicoEncontro servicoEncontro;
-    private AreaEncontro areaAtual;
 
     public ControladorEncontro(ServicoEncontro servicoEncontro) {
         this.servicoEncontro = servicoEncontro;
     }
 
     public void cadastrarArea(AreaEncontro area) {
-        areaAtual = area;
         servicoEncontro.cadastrarArea(area);
     }
 

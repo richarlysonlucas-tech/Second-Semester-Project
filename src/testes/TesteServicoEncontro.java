@@ -12,6 +12,7 @@ import modelo.GatilhoArea;
 import modelo.GatilhoAcao;
 import modelo.EntidadeMundo;
 import servico.ServicoEncontro;
+import servico.DetectorPresenca;
 
 /**
  * Testes simples, sem framework, para executar com Java padrão.
@@ -23,6 +24,9 @@ public class TesteServicoEncontro {
         testarGatilhoDeArea();
         testarGatilhoDeAcao();
         testarProximidade();
+        testarPrioridadeDosGatilhos();
+        testarEntidadeMaisProxima();
+        testarFormulaDaDistancia();
         System.out.println("Todos os testes passaram.");
     }
 
@@ -65,6 +69,52 @@ public class TesteServicoEncontro {
         );
         verificar(resultado.ocorreu(), "A entidade deveria estar dentro do raio.");
         verificar(resultado.getOrigem().contains("MONSTRO_1"), "A origem deveria identificar a entidade.");
+    }
+
+    private static void testarPrioridadeDosGatilhos() {
+        Inimigo inimigoComum = new Inimigo("COMUM", "Inimigo comum", 1);
+        Inimigo chefe = new Inimigo("CHEFE", "Chefe", 10);
+        GatilhoArea gatilhoComum = new GatilhoArea("COMUM", 10, 0, 0, 10, 10, inimigoComum);
+        GatilhoAcao gatilhoChefe = new GatilhoAcao("CHEFE", "ABRIR_BAU", 20, chefe);
+        ContadorDeBatalha contador = new ContadorDeBatalha();
+        ServicoEncontro servico = new ServicoEncontro(new RandomZero(), contador);
+        servico.cadastrarGatilho(gatilhoComum);
+        servico.cadastrarGatilho(gatilhoChefe);
+
+        Encontro resultado = servico.verificar(
+            new Jogador("J1", 5, 5, "AREA_1"),
+            Arrays.asList("ABRIR_BAU")
+        );
+
+        verificar(resultado.getInimigo().equals(chefe), "O gatilho de maior prioridade deveria vencer.");
+        verificar(contador.quantidade == 1, "O início da batalha deveria ser chamado uma única vez.");
+    }
+
+    private static void testarEntidadeMaisProxima() {
+        Inimigo inimigoLonge = new Inimigo("LONGE", "Inimigo longe", 1);
+        Inimigo inimigoPerto = new Inimigo("PERTO", "Inimigo perto", 2);
+        EntidadeMundo entidadeLonge = new EntidadeMundo("E1", 8, 8, 10, inimigoLonge);
+        EntidadeMundo entidadePerto = new EntidadeMundo("E2", 1, 1, 10, inimigoPerto);
+        ContadorDeBatalha contador = new ContadorDeBatalha();
+        ServicoEncontro servico = new ServicoEncontro(new RandomZero(), contador);
+        servico.cadastrarEntidade(entidadeLonge);
+        servico.cadastrarEntidade(entidadePerto);
+
+        Encontro resultado = servico.verificar(new Jogador("J1", 0, 0, "AREA_1"));
+
+        verificar(resultado.getInimigo().equals(inimigoPerto),
+            "A entidade mais próxima deveria vencer.");
+        verificar(resultado.getOrigem().contains("E2"),
+            "A origem deveria identificar a entidade mais próxima.");
+    }
+
+    private static void testarFormulaDaDistancia() {
+        DetectorPresenca detector = new DetectorPresenca();
+        Jogador jogador = new Jogador("J1", 0, 0, "AREA_1");
+        EntidadeMundo entidade = new EntidadeMundo("E1", 3, 4, 5, new Inimigo("E", "Entidade", 1));
+        double distancia = detector.calcularDistancia(jogador, entidade);
+        verificar(Math.abs(distancia - 5.0) < 0.0001,
+            "A distância deveria ser calculada pela raiz de dx² + dy².");
     }
 
     private static void testarForaDaArea() {
