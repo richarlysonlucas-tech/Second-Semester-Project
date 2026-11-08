@@ -1,4 +1,7 @@
 import java.util.Arrays;
+import modelo.GatilhoArea;
+import modelo.GatilhoAcao;
+import modelo.EntidadeMundo;
 
 import controle.ControladorEncontro;
 import controle.IniciadorDeBatalhaConsole;
@@ -19,6 +22,15 @@ public class Principal {
 
         ControladorEncontro controlador = new ControladorEncontro(servico);
         controlador.cadastrarArea(floresta);
+        controlador.cadastrarGatilho(new GatilhoArea(
+            "PORTAL", 10, 80, 80, 5, 5, slime
+        ));
+        controlador.cadastrarGatilho(new GatilhoAcao(
+            "BAU", "ABRIR_BAU", 20, morcego
+        ));
+        controlador.cadastrarEntidade(new EntidadeMundo(
+            "LOBISOMEM", 55, 55, 4, morcego
+        ));
 
         System.out.println(controlador.verificarPresenca("jogador-1", 50, 50, "FLORESTA_01"));
     }

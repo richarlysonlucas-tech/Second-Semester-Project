@@ -1,0 +1,8 @@
+bin/
+*.class
+
+.vscode/
+
+# Arquivos temporarios de sistemas operacionais.
+.DS_Store
+Thumbs.db
