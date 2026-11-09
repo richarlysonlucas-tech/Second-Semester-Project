@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark of Balance - Teste de Áudio</title>
+</head>
+<body>
+    <h1>🎮 Mark of Balance</h1>
+    <h2>Teste de Áudio</h2>
+
+    <button onclick="audio.playSound('damage')">Dano</button>
+    <button onclick="audio.playSound('sword')">Espada</button>
+    <button onclick="audio.playSound('magic')">Magia</button>
+    <button onclick="audio.playSound('grass')">Passos</button>
+    <button onclick="audio.playSound('collect')">Coletar</button>
+    <button onclick="audio.playSound('interface')">Interface</button>
+
+    <button onclick="audio.playMusic('assets/audio/music/music.mp3')">
+        Música
+    </button>
+    <button onclick="audio.stopMusic()">Parar música</button>
+
+    <script type="module">
+        import AudioManager from './js/audio/AudioManager.js';
+
+        const audio = new AudioManager();
+        window.audio = audio;
+
+        
+audio.loadSound('damage', 'assets/audio/combat/combat.mp3');
+audio.loadSound('sword', 'assets/audio/combat/combat.mp3');
+audio.loadSound('magic', 'assets/audio/magic/magic.mp3');
+audio.loadSound('grass', 'assets/audio/footsteps/footsteps.mp3');
+audio.loadSound('collect', 'assets/audio/rewards/rewards.mp3');
+audio.loadSound('interface', 'assets/audio/ui/ui.mp3');
+
+    </script>
+</body>
+</html>
