@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark of Balance - QA Avançado</title>
+    <style>
+        body {
+            background: #141414;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        button {
+            padding: 12px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .pass { color: #4ade80; }
+        .fail { color: #f87171; }
+        .info { color: #facc15; }
+    </style>
+</head>
+<body>
+    <h1>MARK OF BALANCE</h1>
+    <h2>QA Avançado - Sistema de Áudio</h2>
+
+    <button id="run">Executar QA Avançado</button>
+    <div id="results"></div>
+
+    <script type="module">
+        import AudioManager from
+            "../js/audio/AudioManager.js";
+
+        const results = document.getElementById("results");
+
+        function report(name, passed, details = "") {
+            const p = document.createElement("p");
+            p.className = passed ? "pass" : "fail";
+            p.textContent =
+                `${passed ? "PASSOU" : "FALHOU"} - ${name} ${details}`;
+            results.appendChild(p);
+        }
+
+        async function runTests() {
+            results.innerHTML = "";
+
+            const audio = new AudioManager();
+
+            // TESTE 1: Áudio não registrado
+            try {
+                audio.playSound("naoExiste");
+                report("Áudio desconhecido", true);
+            } catch (error) {
+                report("Áudio desconhecido", false);
+            }
+
+            // TESTE 2: Volume acima do máximo
+            audio.setMasterVolume(5);
+            report(
+                "Volume acima do limite",
+                audio.masterVolume === 1
+            );
+
+            // TESTE 3: Volume abaixo do mínimo
+            audio.setMasterVolume(-5);
+            report(
+                "Volume abaixo do limite",
+                audio.masterVolume === 0
+            );
+
+            // TESTE 4: Arquivo inexistente
+            const missing = new Audio(
+                "../assets/audio/arquivo-inexistente.mp3"
+            );
+
+            try {
+                const response = await fetch(missing.src);
+                report(
+                    "Arquivo inexistente detectado",
+                    response.status === 404
+                );
+            } catch (error) {
+                report(
+                    "Arquivo inexistente detectado",
+                    false,
+                    error.message
+                );
+            }
+
+            // TESTE 5: Reprodução repetida
+            audio.setMasterVolume(0.7);
+
+            try {
+                for (let i = 0; i < 10; i++) {
+                    audio.playSound("sword");
+                }
+
+                report("10 reproduções consecutivas", true);
+            } catch (error) {
+                report("10 reproduções consecutivas", false);
+            }
+
+            // TESTE 6: Recuperação
+            try {
+                audio.playSound("zombie");
+                report("Recuperação após testes", true);
+            } catch (error) {
+                report("Recuperação após testes", false);
+            }
+        }
+
+        document.getElementById("run")
+            .addEventListener("click", runTests);
+    </script>
+</body>
+</html>

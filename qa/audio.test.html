@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark of Balance - QA Automático</title>
+    <style>
+        body {
+            background: #141414;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        .pass { color: #4ade80; }
+        .fail { color: #f87171; }
+        .info { color: #facc15; }
+    </style>
+</head>
+<body>
+    <h1>Mark of Balance</h1>
+    <h2>QA - Testes Automatizados</h2>
+
+    <button id="run">Executar testes</button>
+    <div id="results"></div>
+
+    <script type="module">
+        import AudioManager from
+            "../js/audio/AudioManager.js";
+
+        const results = document.getElementById("results");
+
+        function report(name, passed, details = "") {
+            const p = document.createElement("p");
+            p.className = passed ? "pass" : "fail";
+            p.textContent =
+                `${passed ? "PASSOU" : "FALHOU"} - ${name} ${details}`;
+            results.appendChild(p);
+        }
+
+        async function runTests() {
+            results.innerHTML = "";
+
+            const audio = new AudioManager();
+
+            const names = [
+                "zombie",
+                "golem",
+                "magic",
+                "regeneration",
+                "killEnemy",
+                "gameOver",
+                "sword",
+                "walking",
+                "collect",
+                "interface"
+            ];
+
+            // Teste 1: verificar sons registrados
+            for (const name of names) {
+                report(
+                    `Registro: ${name}`,
+                    audio.sounds[name] instanceof Audio
+                );
+            }
+
+            // Teste 2: verificar arquivos MP3
+            for (const name of names) {
+                const sound = audio.sounds[name];
+
+                if (!sound) continue;
+
+                try {
+                    
+const caminhoCorreto = new URL(
+    "../" + sound.getAttribute("src"),
+    window.location.href
+);
+
+const response = await fetch(caminhoCorreto);
+
+
+                    report(
+                        `Arquivo: ${name}`,
+                        response.ok,
+                        `HTTP ${response.status}`
+                    );
+                } catch (error) {
+                    report(
+                        `Arquivo: ${name}`,
+                        false,
+                        error.message
+                    );
+                }
+            }
+
+            // Teste 3: limites de volume
+            audio.setMasterVolume(2);
+            report(
+                "Volume máximo",
+                audio.masterVolume === 1
+            );
+
+            audio.setMasterVolume(-1);
+            report(
+                "Volume mínimo",
+                audio.masterVolume === 0
+            );
+
+            audio.setSfxVolume(2);
+            report(
+                "Volume de efeitos",
+                audio.sfxVolume === 1
+            );
+
+            audio.setMusicVolume(-1);
+            report(
+                "Volume da música",
+                audio.musicVolume === 0
+            );
+        }
+
+        document.getElementById("run")
+            .addEventListener("click", runTests);
+    </script>
+</body>
+</html>

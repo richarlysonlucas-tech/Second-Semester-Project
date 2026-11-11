@@ -1,12 +1,32 @@
 
 class AudioManager {
-    constructor() {
-        this.sounds = {};
-        this.music = null;
-        this.masterVolume = 0.7;
-        this.sfxVolume = 0.8;
-        this.musicVolume = 0.5;
-    }
+    
+constructor() {
+    this.sounds = {};
+    this.music = null;
+    this.masterVolume = 0.7;
+    this.sfxVolume = 0.8;
+    this.musicVolume = 0.5;
+
+    // Carregar os novos efeitos sonoros
+    this.loadSound("zombie", "assets/audio/zombie/zombie.mp3");
+    this.loadSound("golem", "assets/audio/golem/golem.mp3");
+    this.loadSound("magic", "assets/audio/magic/magic.mp3");
+    this.loadSound("regeneration", "assets/audio/regeneration/regeneration.mp3");
+    this.loadSound("killEnemy", "assets/audio/kill enemy/kill enemy.mp3");
+    this.loadSound("gameOver", "assets/audio/game over/game over.mp3");
+   
+this.loadSound("sword", "assets/audio/combat/combat.mp3");
+
+this.loadSound("walking", "assets/audio/footsteps/footsteps.mp3");
+
+this.loadSound("collect", "assets/audio/rewards/rewards.mp3");
+
+this.loadSound("interface", "assets/audio/ui/ui.mp3");
+}
+
+
+
 
     loadSound(name, path) {
         const audio = new Audio(path);
