@@ -70,3 +70,49 @@ Resultado: 6/6 verificações iniciais aprovadas.
 Observação:
 Ainda precisamos validar a reprodução real,
 a sobreposição de sons e o consumo de memória.
+
+## 9. Testes de Otimização
+
+Data: 11/11/2026
+
+- [x] Limite de 8 efeitos configurado
+- [x] Conjunto de sons ativos criado
+- [x] Bloqueio do nono efeito validado
+- [x] Remoção simulada de efeito validada
+
+Resultado: 4/4 verificações aprovadas.
+
+Pendente:
+- Testar remoção automática após o áudio terminar
+- Verificar desempenho com reprodução prolongada
+- Confirmar ausência de vazamentos de recursos
+
+## 10. Teste de Cleanup
+
+Data: 11/11/2026
+
+- [x] Efeito registrado no conjunto de sons ativos
+- [x] Efeito removido automaticamente
+- [x] Liberação realizada dentro de 15 segundos
+
+Resultado: APROVADO
+
+Observação:
+A remoção foi confirmada.
+A causa da remoção ainda precisa ser validada:
+término normal ou falha de reprodução.
+
+## 11. Correção de Caminhos e Regressão
+
+Data: 11/11/2026
+
+- [x] Corrigidos os caminhos dos arquivos MP3
+- [x] Reprodução da espada confirmada
+- [x] Cleanup funcionando
+- [x] Testes automatizados executados novamente
+- [x] 24/24 testes aprovados
+
+Resultado: APROVADO
+
+Próxima etapa:
+Teste de desempenho prolongado.

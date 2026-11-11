@@ -7,6 +7,8 @@ constructor() {
     this.masterVolume = 0.7;
     this.sfxVolume = 0.8;
     this.musicVolume = 0.5;
+this.activeSounds = new Set();
+this.maxConcurrentSounds = 8;
 
     // Carregar os novos efeitos sonoros
     this.loadSound("zombie", "assets/audio/zombie/zombie.mp3");
@@ -28,27 +30,52 @@ this.loadSound("interface", "assets/audio/ui/ui.mp3");
 
 
 
-    loadSound(name, path) {
-        const audio = new Audio(path);
-        audio.preload = "auto";
-        this.sounds[name] = audio;
+    
+loadSound(name, path) {
+    const projectRoot = new URL("../../", import.meta.url);
+    const audioPath = new URL(path, projectRoot);
+
+    const audio = new Audio(audioPath.href);
+    audio.preload = "auto";
+
+    this.sounds[name] = audio;
+}
+
+
+   
+playSound(name) {
+    const audio = this.sounds[name];
+
+    if (!audio) {
+        console.warn("Áudio não encontrado:", name);
+        return;
     }
 
-    playSound(name) {
-        const audio = this.sounds[name];
-
-        if (!audio) {
-            console.warn("Áudio não encontrado:", name);
-            return;
-        }
-
-        const sound = audio.cloneNode();
-        sound.volume = this.masterVolume * this.sfxVolume;
-
-        sound.play().catch(error => {
-            console.warn("Erro no áudio:", error);
-        });
+    if (this.activeSounds.size >= this.maxConcurrentSounds) {
+        console.warn("Limite de sons simultâneos atingido");
+        return;
     }
+
+    const sound = audio.cloneNode();
+    sound.volume = this.masterVolume * this.sfxVolume;
+
+    this.activeSounds.add(sound);
+
+    const cleanup = () => {
+        this.activeSounds.delete(sound);
+        sound.removeEventListener("ended", cleanup);
+        sound.removeEventListener("error", cleanup);
+    };
+
+    sound.addEventListener("ended", cleanup);
+    sound.addEventListener("error", cleanup);
+
+    sound.play().catch(error => {
+        console.warn("Erro no áudio:", error);
+        cleanup();
+    });
+}
+
 
     playMusic(path) {
         this.stopMusic();

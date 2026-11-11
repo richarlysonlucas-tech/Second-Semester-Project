@@ -72,12 +72,11 @@
 
                 try {
                     
-const caminhoCorreto = new URL(
-    "../" + sound.getAttribute("src"),
-    window.location.href
-);
 
-const response = await fetch(caminhoCorreto);
+const response = await fetch(sound.src);
+
+
+
 
 
                     report(

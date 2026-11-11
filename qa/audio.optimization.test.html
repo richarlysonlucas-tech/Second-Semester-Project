@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>QA - Otimização de Áudio</title>
+    <style>
+        body {
+            background: #141414;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+        .pass { color: #4ade80; }
+        .fail { color: #f87171; }
+    </style>
+</head>
+<body>
+    <h1>Mark of Balance</h1>
+    <h2>Teste de Otimização</h2>
+
+    <button id="run">Executar testes</button>
+    <div id="results"></div>
+
+    <script type="module">
+        import AudioManager from "../js/audio/AudioManager.js";
+
+        const results = document.getElementById("results");
+
+        function report(name, passed) {
+            const p = document.createElement("p");
+            p.className = passed ? "pass" : "fail";
+            p.textContent =
+                `${passed ? "PASSOU" : "FALHOU"} - ${name}`;
+            results.appendChild(p);
+        }
+
+        async function runTests() {
+            results.innerHTML = "";
+
+            const audio = new AudioManager();
+
+            report(
+                "Limite configurado para 8",
+                audio.maxConcurrentSounds === 8
+            );
+
+            report(
+                "Conjunto de sons ativos criado",
+                audio.activeSounds instanceof Set
+            );
+
+            // Teste de limite usando objetos simulados
+            const fakeSounds = [];
+
+            for (let i = 0; i < 8; i++) {
+                const fake = { id: i };
+                fakeSounds.push(fake);
+                audio.activeSounds.add(fake);
+            }
+
+            const before = audio.activeSounds.size;
+
+            audio.playSound("sword");
+
+            report(
+                "Bloqueio do nono efeito",
+                before === 8 &&
+                audio.activeSounds.size === 8
+            );
+
+            // Simular liberação de uma posição
+            audio.activeSounds.delete(fakeSounds[0]);
+
+            report(
+                "Liberação de posição no conjunto",
+                audio.activeSounds.size === 7
+            );
+
+            audio.activeSounds.clear();
+        }
+
+        document.getElementById("run")
+            .addEventListener("click", runTests);
+    </script>
+</body>
+</html>

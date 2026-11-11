@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark of Balance - Cleanup Test</title>
+    <style>
+        body {
+            background: #141414;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        .pass { color: #4ade80; }
+        .fail { color: #f87171; }
+        .info { color: #facc15; }
+    </style>
+</head>
+<body>
+    <h1>MARK OF BALANCE</h1>
+    <h2>QA - Limpeza Automática</h2>
+
+    <button id="run">Testar Cleanup</button>
+    <div id="results"></div>
+
+    <script type="module">
+        import AudioManager from "../js/audio/AudioManager.js";
+
+        const results = document.getElementById("results");
+        const button = document.getElementById("run");
+
+        const audio = new AudioManager();
+
+        function report(message, type) {
+            const p = document.createElement("p");
+            p.className = type;
+            p.textContent = message;
+            results.appendChild(p);
+        }
+
+        button.addEventListener("click", async () => {
+            button.disabled = true;
+            results.innerHTML = "";
+
+            // Garantir que nenhum efeito anterior esteja ativo
+            if (audio.activeSounds.size !== 0) {
+                report(
+                    "FALHOU - Ainda existem efeitos ativos",
+                    "fail"
+                );
+                button.disabled = false;
+                return;
+            }
+
+            // Iniciar reprodução real
+            audio.playSound("sword");
+
+            report(
+                "Efeitos ativos após iniciar: " +
+                audio.activeSounds.size,
+                "info"
+            );
+
+            // Aguardar o término do áudio ou uma falha
+            const startedAt = Date.now();
+
+            while (
+                audio.activeSounds.size > 0 &&
+                Date.now() - startedAt < 15000
+            ) {
+                await new Promise(resolve =>
+                    setTimeout(resolve, 100)
+                );
+            }
+
+            const passed = audio.activeSounds.size === 0;
+
+            report(
+                passed
+                    ? "PASSOU - Cleanup liberou o efeito"
+                    : "FALHOU - Efeito continua ativo após 15s",
+                passed ? "pass" : "fail"
+            );
+
+            button.disabled = false;
+        });
+    </script>
+</body>
+</html>
