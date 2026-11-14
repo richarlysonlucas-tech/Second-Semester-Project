@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.zip.CRC32;
 
 import estado.DadosDoJogo;
+import util.JsonSimples;
 
 /**
  * Save em arquivos JSON, um por slot: slot1.json, slot2.json, ...

@@ -1,4 +1,4 @@
-package save;
+package util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,7 +11,7 @@ import java.util.Map;
  * Suporta objetos, listas, textos, números, booleanos e null.
  * Números inteiros viram Long; números com ponto ou expoente viram Double.
  */
-final class JsonSimples {
+public final class JsonSimples {
     private static final int PROFUNDIDADE_MAXIMA = 32;
 
     private final String texto;
@@ -23,7 +23,7 @@ final class JsonSimples {
 
     // ---------------------------------------------------------------- escrita
 
-    static String escrever(Object valor) {
+    public static String escrever(Object valor) {
         StringBuilder sb = new StringBuilder();
         escrever(valor, sb);
         return sb.toString();
@@ -97,7 +97,7 @@ final class JsonSimples {
     // ---------------------------------------------------------------- leitura
 
     /** @throws IllegalArgumentException se o texto não for um JSON válido */
-    static Object ler(String texto) {
+    public static Object ler(String texto) {
         JsonSimples leitor = new JsonSimples(texto);
         Object valor = leitor.lerValor(0);
         leitor.pularEspacos();
